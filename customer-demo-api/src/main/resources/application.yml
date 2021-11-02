@@ -1,0 +1,47 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: customer-accounts-demo
+  banner:
+    location: classpath:META-INF/banner.txt
+  config:
+    name: application-context
+    location: classpath:*
+#  datasource:
+#    url: jdbc:postgresql://${ENV_DB_HOST}:${ENV_DB_PORT}/${ENV_DB_NAME}
+#    username: ${ENV_DB_USERNAME}
+#    password: ${vcap.services.lca-customeraccountsdemo-credhub.credentials.dbcredential}
+  info:
+    build:
+      location: classpath:META-INF/build-info.properties
+    git:
+      location: classpath:git.properties
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  mustache:
+    check-template-location: false
+#app:
+#  services:
+#    account:
+#      config:
+#        path: 'classpath:'
+#  webclient:
+#    config:
+#      path: 'classpath:'
+#  wsclient:
+#    config:
+#      path: 'classpath:'
+#address:
+#  service:
+#    default:
+#      uri: 'http://localhost:49153/ws'
+#customers:
+#  services:
+#    batch_size: 200
+security:
+  trusted-principals: distributie-api.extern.rabobank.nl, distributie-azure-api.rabobank.nl

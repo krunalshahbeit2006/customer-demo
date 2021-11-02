@@ -1,0 +1,16 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Built-By: Shah, KA (Krunal)
+Start-Class: CustomerAccountsApplication
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+Created-By: Rabobank Nederland 1.0.0
+Main-Class: com.example.demo.services.customer.CustomerApplication
+Class-Path: classpath:*
+Name:
+Specification-Title: customer-accounts-demo
+Specification-Version: 0.0.1-SNAPSHOT
+Specification-Vendor: Rabobank Nederland..
+Implementation-Title: customer-accounts-demo
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor: Rabobank Nederland.

@@ -1,0 +1,726 @@
+openapi: 3.0.1
+info:
+  title: Demo project for Spring Boot
+  description: |
+    This is a sample demo application for learning and coaching Spring Boot.
+    validator: https://apivalidator-web.apps.pcf-t02-we.rabobank.nl/
+  termsOfService: na
+  contact:
+    name: KRUNAL SHAH
+    url: http://swagger.io
+    email: krunal.shah@rabobank.nl
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+  x-api-id: customeraccountsdemo
+  x-audience: company-internal
+servers:
+  - url: https://virtserver.swaggerhub.com/api/customers
+paths:
+  /:
+    get:
+      summary: Get customers
+      description: This can be done by the accessing an api.
+      operationId: getCustomers
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+        '204':
+          description: No Content
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+    post:
+      summary: Create customer
+      description: This can be done by the accessing an api.
+      operationId: postCustomer
+      requestBody:
+        description: Created customer object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/CustomerDTO'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+      x-codegen-request-body-name: customerDTO
+  /{id}:
+    get:
+      summary: Get customer by id
+      description: This can be done by the accessing an api.
+      operationId: getCustomerById
+      parameters:
+        - name: id
+          in: path
+          description: The 'id' that needs to be fetched. Use 1 for testing.
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '204':
+          description: No Content
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+    put:
+      summary: Updated customer
+      description: This can be done by the accessing an api.
+      operationId: updateCustomer
+      parameters:
+        - name: id
+          in: path
+          description: Customer that need to be updated
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Updated customer object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/CustomerDTO'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+      x-codegen-request-body-name: customerDTO
+    delete:
+      summary: Delete customer
+      description: This can be done by the accessing an api.
+      operationId: deleteCustomer
+      parameters:
+        - name: id
+          in: path
+          description: The customer that needs to be deleted
+          required: true
+          schema:
+            type: integer
+      responses:
+        '202':
+          description: Accepted
+          content: {}
+        '204':
+          description: No Content
+          content: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '410':
+          description: Gone
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+    patch:
+      summary: Patched customer
+      description: This can be done by the accessing an api.
+      operationId: patchCustomer
+      parameters:
+        - name: id
+          in: path
+          description: Customer that need to be patched
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        description: Patched customer object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CustomerDTO'
+          application/merge-patch+json:
+            schema:
+              $ref: '#/components/schemas/CustomerDTO'
+        required: true
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+      x-codegen-request-body-name: customerDTO
+  /bulk:
+    put:
+      summary: Update list of customers with given input array
+      description: This can be done by the accessing an api.
+      operationId: putCustomers
+      requestBody:
+        description: List of customer object
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerDTO'
+          application/merge-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerDTO'
+        required: true
+      responses:
+        '207':
+          description: Multi-Status
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+      x-codegen-request-body-name: customerDTO
+    post:
+      summary: Creates list of customers with given input array
+      description: This can be done by the accessing an api.
+      operationId: postCustomers
+      requestBody:
+        description: List of customer object
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerDTO'
+          application/merge-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerDTO'
+        required: true
+      responses:
+        '207':
+          description: Multi-Status
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+      x-codegen-request-body-name: customerDTO
+    patch:
+      summary: Patch list of customers with given input array
+      description: This can be done by the accessing an api.
+      operationId: patchCustomers
+      requestBody:
+        description: List of customer object
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerDTO'
+          application/merge-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/CustomerDTO'
+        required: true
+      responses:
+        '207':
+          description: Multi-Status
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomerResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '404':
+          description: Not Found
+          content: {}
+        '408':
+          description: Request Timeout
+          content: {}
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Problem'
+      security:
+        - api_key: []
+      x-codegen-request-body-name: customerDTO
+components:
+  schemas:
+    CustomerDTO:
+      title: Customer DTO object for request
+      required:
+        - email
+        - modifiedBy
+        - name
+        - telephone
+        - uniqueId
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Primary key to identify the customer
+          format: int64
+        uniqueId:
+          maxLength: 10
+          minLength: 1
+          type: string
+          description: Unique number to identify the customer
+          example: 100000001, 100000002, 100000003...
+        name:
+          maxLength: 50
+          minLength: 1
+          type: string
+          description: Name of the customer
+          example: Customer 1, Customer 2, Customer 3...
+        email:
+          maxLength: 50
+          minLength: 1
+          type: string
+          description: E-Mail of the customer
+          example: customer.1@smtpdomain.com, customer.2@smtpdomain.com, customer.3@smtpdomain.com...
+        telephone:
+          maxLength: 15
+          minLength: 1
+          type: string
+          description: Telephone of the customer
+          example: +319876543210, +318765432109, +317654321098...
+        modifiedBy:
+          maxLength: 50
+          minLength: 1
+          type: string
+          description: Name of the employee who created/updated the customer details
+          example: User 1, User 2, User 3...
+        accounts:
+          type: array
+          description: The account associated with the customer
+          items:
+            $ref: '#/components/schemas/AccountDTO'
+    AccountDTO:
+      title: Account DTO object for request
+      required:
+        - amount
+        - bic
+        - iban
+        - modifiedBy
+        - name
+        - uniqueId
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Primary key to identify the account
+          format: int64
+        uniqueId:
+          maxLength: 10
+          minLength: 1
+          type: string
+          description: Unique number to identify the account
+          example: 100000001, 100000002, 100000003...
+        name:
+          maxLength: 50
+          minLength: 1
+          type: string
+          description: Name of the account
+          example: Account 1, Account 2, Account 3...
+        iban:
+          maxLength: 35
+          minLength: 1
+          type: string
+          description: International bank account number of the account
+          example: NL01RABO1234567890, NL02RABO2345678901, NL03RABO3456789012...
+        bic:
+          maxLength: 11
+          minLength: 1
+          type: string
+          description: Bank identifier code of the account
+          example: RABONL2U, ABNANL2A, INGBNL2A...
+        amount:
+          type: string
+          minLength: 1
+          maxLength: 13
+          pattern: ^([-+]?[1-9](\d{0,2})(\.\d{3})*(?:,\d{2})?)$
+          description: Amount on the account
+          example: '1.234,00 / 2.345,05 / 3.456,50..'
+        modifiedBy:
+          maxLength: 50
+          minLength: 1
+          type: string
+          description: Name of the employee who created/updated the account details
+          example: User 1, User 2, User 3...
+    CustomerResponse:
+      title: Customer object for response
+      type: object
+      properties:
+        uniqueId:
+          type: string
+          description: Unique number to identify the customer
+          example: 100000001, 100000002, 100000003...
+        name:
+          type: string
+          description: Name of the customer
+          example: Customer 1, Customer 2, Customer 3...
+        email:
+          type: string
+          description: E-Mail of the customer
+          example: customer.1@smtpdomain.com, customer.2@smtpdomain.com, customer.3@smtpdomain.com...
+        telephone:
+          type: string
+          description: Telephone of the customer
+          example: +319876543210, +318765432109, +317654321098...
+        accounts:
+          type: array
+          description: The account associated with the customer
+          items:
+            $ref: '#/components/schemas/AccountResponse'
+    AccountResponse:
+      title: Account object for response
+      type: object
+      properties:
+        uniqueId:
+          type: string
+          description: Unique number to identify the account
+          example: 100000001, 100000002, 100000003...
+        name:
+          type: string
+          description: Name of the account
+          example: Account 1, Account 2, Account 3...
+        iban:
+          type: string
+          description: International bank account number of the account
+          example: NL01RABO1234567890, NL02RABO2345678901, NL03RABO3456789012...
+        bic:
+          type: string
+          description: Bank identifier code of the account
+          example: RABONL2U, ABNANL2A, INGBNL2A...
+        amount:
+          type: string
+          description: Amount on the account
+          example: '1.234,00 / 2.345,05 / 3.456,50...'
+    Problem:
+      title: Problem object for exception/error
+      type: object
+      properties:
+        status:
+          type: integer
+          description: |
+            The HTTP status code generated by the origin server for this occurrence of the problem.
+          format: int32
+        title:
+          type: string
+          description: |
+            A short, human-readable summary of the problem type.
+            It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localisation.
+          example: No Content, Bad Request, Not Found, Request Timeout, Conflict,
+            Gone, Unprocessable Entity, Internal Server Error
+        detail:
+          type: string
+          description: |
+            A human readable explanation specific to this occurrence of the problem.
+          example: No Content for input field
+        type:
+          type: string
+          description: |
+            An absolute URI that identifies the problem type.  When dereferenced,
+            it SHOULD provide human-readable documentation for the problem type (e.g., using HTML).
+          format: uri
+          example: '''https://zalando.github.io/problem/constraint-violation'''
+          default: about:blank
+        instance:
+          type: string
+          description: |
+            An absolute URI that identifies the specific occurrence of the problem.
+            It may or may not yield further information if dereferenced.
+          format: uri
+          example: '''/problem/connection-error#token-info-read-timed-out'''
+        violations:
+          type: array
+          description: |
+            Violation Details.externalDocs:
+          items:
+            $ref: '#/components/schemas/Violation'
+    Violation:
+      type: object
+      properties:
+        field:
+          type: string
+          description: |
+            A human readable explanation specific to this occurrence of the problem that is helpful to locate the problem and give advice on how to proceed.
+            Written in English and readable for engineers, usually not suited for non technical stakeholders and not localized.
+          example: customer.name
+        message:
+          type: string
+          description: |
+            A human readable explanation specific to this occurrence of the problem that is helpful to locate the problem and give advice on how to proceed.
+            Written in English and readable for engineers, usually not suited for non technical stakeholders and not localized.
+          example: Name must not be null or blank
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: Rabobank-ApiKey
+      in: header

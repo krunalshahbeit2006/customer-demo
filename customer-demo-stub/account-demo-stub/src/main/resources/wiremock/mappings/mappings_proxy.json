@@ -1,0 +1,27 @@
+{
+  "mappings": [
+    {
+      "priority": 2,
+      "request": {
+        "method": "GET",
+        "urlPathPattern": "/service/accounts",
+        "headers": {
+        },
+        "queryParameters": {
+        },
+        "bodyPatterns": [
+          {
+            "absent": true
+          }
+        ]
+      },
+      "response": {
+        "proxyBaseUrl": "https://localhost:8080",
+        "additionalProxyRequestHeaders": {
+          "method": "GET",
+          "Content-Type": "application/json"
+        }
+      }
+    }
+  ]
+}

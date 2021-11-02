@@ -1,0 +1,1253 @@
+{
+	"info": {
+		"_postman_id": "410fc873-57ca-473a-9ecd-92f88759033a",
+		"name": "DEMO - Customer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. LOCAL",
+			"item": [
+				{
+					"name": "Actuator - Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/actuator/health",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"actuator",
+								"health"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "H2 -Database",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/h2-console/customer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"h2-console",
+								"customer",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Customer 1\",\r\n    \"email\": \"customer.1@smtpdomain.com\",\r\n    \"telephone\": \"+319876543210\",\r\n    \"modifiedBy\": \"User 1\",\r\n    \"accounts\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveAllCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/customers",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/1000000001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Customer 1 new name\",\r\n    \"email\": \"customer.1.newname@smtpdomain.com\",\r\n    \"telephone\": \"+310123456789\",\r\n    \"modifiedBy\": \"User 1\",\r\n    \"accounts\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers/1000000001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/customers/1000000001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"name\": \"Customer 2\",\r\n    \"email\": \"customer.2@smtpdomain.com\",\r\n    \"telephone\": \"+318765432109\",\r\n    \"modifiedBy\": \"User 2\",\r\n    \"accounts\": []\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"customerId\": \"1000000002\",\r\n        \"customer\": {\r\n            \"name\": \"Customer 2 new name\",\r\n            \"email\": \"customer.2.newname@smtpdomain.com\",\r\n            \"telephone\": \"+319012345678\",\r\n            \"modifiedBy\": \"User 2\",\r\n            \"accounts\": []\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/customers/batch",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"customers",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveAccountsByCustomerId - Stub",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-scenario",
+								"value": "OK-NO_RECORD",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8089/service/accounts?customerId=1000000001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8089",
+							"path": [
+								"service",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "1000000001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveAccountsByCustomerId",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/accounts?customerId=1000000001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"accounts"
+							],
+							"query": [
+								{
+									"key": "customerId",
+									"value": "1000000001"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Addresses - WSDL",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49153/ws/addresses.wsdl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49153",
+							"path": [
+								"ws",
+								"addresses.wsdl"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveAllAddresses",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/addresses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"addresses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveAddressesByCountry",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8080/api/addresses/Spain",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"addresses",
+								"Spain"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. PCF",
+			"item": [
+				{
+					"name": "createCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Customer 1\",\r\n    \"email\": \"customer.1@smtpdomain.com\",\r\n    \"telephone\": \"+319876543210\",\r\n    \"modifiedBy\": \"User 1\",\r\n    \"accounts\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://customerdemo-api.apps.pcf-t02-we.rabobank.nl/api/customers",
+							"protocol": "https",
+							"host": [
+								"customerdemo-api",
+								"apps",
+								"pcf-t02-we",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveAllCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://customerdemo-api.apps.pcf-t02-we.rabobank.nl/api/customers",
+							"protocol": "https",
+							"host": [
+								"customerdemo-api",
+								"apps",
+								"pcf-t02-we",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveCustomerById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://customerdemo-api.apps.pcf-t02-we.rabobank.nl/api/customers/1000000001",
+							"protocol": "https",
+							"host": [
+								"customerdemo-api",
+								"apps",
+								"pcf-t02-we",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Customer 1 new name\",\r\n    \"email\": \"customer.1.newname@smtpdomain.com\",\r\n    \"telephone\": \"+310123456789\",\r\n    \"modifiedBy\": \"User 1\",\r\n    \"accounts\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://customerdemo-api.apps.pcf-t02-we.rabobank.nl/api/customers/1000000001",
+							"protocol": "https",
+							"host": [
+								"customerdemo-api",
+								"apps",
+								"pcf-t02-we",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://customerdemo-api.apps.pcf-t02-we.rabobank.nl/api/customers/1000000001",
+							"protocol": "https",
+							"host": [
+								"customerdemo-api",
+								"apps",
+								"pcf-t02-we",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"name\": \"Customer 2\",\r\n    \"email\": \"customer.2@smtpdomain.com\",\r\n    \"telephone\": \"+318765432109\",\r\n    \"modifiedBy\": \"User 2\",\r\n    \"accounts\": []\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://customerdemo-api.apps.pcf-t02-we.rabobank.nl/api/customers/batch",
+							"protocol": "https",
+							"host": [
+								"customerdemo-api",
+								"apps",
+								"pcf-t02-we",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"api",
+								"customers",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"customerId\": \"1000000002\",\r\n        \"customer\": {\r\n            \"name\": \"Customer 2 new name\",\r\n            \"email\": \"customer.2.newname@smtpdomain.com\",\r\n            \"telephone\": \"+319012345678\",\r\n            \"modifiedBy\": \"User 2\",\r\n            \"accounts\": []\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://customerdemo-api.apps.pcf-t02-we.rabobank.nl/api/customers/batch",
+							"protocol": "https",
+							"host": [
+								"customerdemo-api",
+								"apps",
+								"pcf-t02-we",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"api",
+								"customers",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. API GATEWAY",
+			"item": [
+				{
+					"name": "APIARY",
+					"item": [
+						{
+							"name": "createCustomer",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Rabobank-ApiKey",
+										"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Customer 1\",\r\n    \"email\": \"customer.1@smtpdomain.com\",\r\n    \"telephone\": \"+319876543210\",\r\n    \"modifiedBy\": \"User 1\",\r\n    \"accounts\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://private-6ec8a-customerdemoapi.apiary-mock.com/api/customers/",
+									"protocol": "https",
+									"host": [
+										"private-6ec8a-customerdemoapi",
+										"apiary-mock",
+										"com"
+									],
+									"path": [
+										"api",
+										"customers",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieveAllCustomers",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Rabobank-ApiKey",
+										"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://private-6ec8a-customerdemoapi.apiary-mock.com/api/customers/",
+									"protocol": "https",
+									"host": [
+										"private-6ec8a-customerdemoapi",
+										"apiary-mock",
+										"com"
+									],
+									"path": [
+										"api",
+										"customers",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "retrieveCustomerById",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Rabobank-ApiKey",
+										"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://private-6ec8a-customerdemoapi.apiary-mock.com/api/customers/1000000001",
+									"protocol": "https",
+									"host": [
+										"private-6ec8a-customerdemoapi",
+										"apiary-mock",
+										"com"
+									],
+									"path": [
+										"api",
+										"customers",
+										"1000000001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCustomer",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Rabobank-ApiKey",
+										"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Customer 1 new name\",\r\n    \"email\": \"customer.1.newname@smtpdomain.com\",\r\n    \"telephone\": \"+310123456789\",\r\n    \"modifiedBy\": \"User 1\",\r\n    \"accounts\": []\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://private-6ec8a-customerdemoapi.apiary-mock.com/api/customers/1000000001",
+									"protocol": "https",
+									"host": [
+										"private-6ec8a-customerdemoapi",
+										"apiary-mock",
+										"com"
+									],
+									"path": [
+										"api",
+										"customers",
+										"1000000001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "deleteCustomer",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Rabobank-ApiKey",
+										"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://private-6ec8a-customerdemoapi.apiary-mock.com/api/customers/1000000001",
+									"protocol": "https",
+									"host": [
+										"private-6ec8a-customerdemoapi",
+										"apiary-mock",
+										"com"
+									],
+									"path": [
+										"api",
+										"customers",
+										"1000000001"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "createCustomers",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Rabobank-ApiKey",
+										"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[{\r\n    \"name\": \"Customer 2\",\r\n    \"email\": \"customer.2@smtpdomain.com\",\r\n    \"telephone\": \"+318765432109\",\r\n    \"modifiedBy\": \"User 2\",\r\n    \"accounts\": []\r\n}]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://private-6ec8a-customerdemoapi.apiary-mock.com/api/customers/batch",
+									"protocol": "https",
+									"host": [
+										"private-6ec8a-customerdemoapi",
+										"apiary-mock",
+										"com"
+									],
+									"path": [
+										"api",
+										"customers",
+										"batch"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "updateCustomers",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Rabobank-ApiKey",
+										"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"customerId\": \"1000000002\",\r\n        \"customer\": {\r\n            \"name\": \"Customer 2 new name\",\r\n            \"email\": \"customer.2.newname@smtpdomain.com\",\r\n            \"telephone\": \"+319012345678\",\r\n            \"modifiedBy\": \"User 2\",\r\n            \"accounts\": []\r\n        }\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://private-6ec8a-customerdemoapi.apiary-mock.com/api/customers/batch",
+									"protocol": "https",
+									"host": [
+										"private-6ec8a-customerdemoapi",
+										"apiary-mock",
+										"com"
+									],
+									"path": [
+										"api",
+										"customers",
+										"batch"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "createCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Rabobank-ApiKey",
+								"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Customer 1\",\r\n    \"email\": \"customer.1@smtpdomain.com\",\r\n    \"telephone\": \"+319876543210\",\r\n    \"modifiedBy\": \"User 1\",\r\n    \"accounts\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://distributie-ktn-api.intern.rabobank.nl/demo/api/customer/v1/api/customers",
+							"protocol": "http",
+							"host": [
+								"distributie-ktn-api",
+								"intern",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"demo",
+								"api",
+								"customer",
+								"v1",
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveAllCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Rabobank-ApiKey",
+								"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://distributie-ktn-api.intern.rabobank.nl/demo/api/customer/v1/api/customers",
+							"protocol": "http",
+							"host": [
+								"distributie-ktn-api",
+								"intern",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"demo",
+								"api",
+								"customer",
+								"v1",
+								"api",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "retrieveCustomerById",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Rabobank-ApiKey",
+								"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://distributie-ktn-api.intern.rabobank.nl/demo/api/customer/v1/api/customers/1000000001",
+							"protocol": "http",
+							"host": [
+								"distributie-ktn-api",
+								"intern",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"demo",
+								"api",
+								"customer",
+								"v1",
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Rabobank-ApiKey",
+								"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Customer 1 new name\",\r\n    \"email\": \"customer.1.newname@smtpdomain.com\",\r\n    \"telephone\": \"+310123456789\",\r\n    \"modifiedBy\": \"User 1\",\r\n    \"accounts\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://distributie-ktn-api.intern.rabobank.nl/demo/api/customer/v1/api/customers/1000000001",
+							"protocol": "http",
+							"host": [
+								"distributie-ktn-api",
+								"intern",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"demo",
+								"api",
+								"customer",
+								"v1",
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCustomer",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Rabobank-ApiKey",
+								"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://distributie-ktn-api.intern.rabobank.nl/demo/api/customer/v1/api/customers/1000000001",
+							"protocol": "http",
+							"host": [
+								"distributie-ktn-api",
+								"intern",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"demo",
+								"api",
+								"customer",
+								"v1",
+								"api",
+								"customers",
+								"1000000001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Rabobank-ApiKey",
+								"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\r\n    \"name\": \"Customer 2\",\r\n    \"email\": \"customer.2@smtpdomain.com\",\r\n    \"telephone\": \"+318765432109\",\r\n    \"modifiedBy\": \"User 2\",\r\n    \"accounts\": []\r\n}]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://distributie-ktn-api.intern.rabobank.nl/demo/api/customer/v1/api/customers/batch",
+							"protocol": "http",
+							"host": [
+								"distributie-ktn-api",
+								"intern",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"demo",
+								"api",
+								"customer",
+								"v1",
+								"api",
+								"customers",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCustomers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Rabobank-ApiKey",
+								"value": "38f12c8f-32da-4156-b9c7-83edf373ea3b",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"customerId\": \"1000000002\",\r\n        \"customer\": {\r\n            \"name\": \"Customer 2 new name\",\r\n            \"email\": \"customer.2.newname@smtpdomain.com\",\r\n            \"telephone\": \"+319012345678\",\r\n            \"modifiedBy\": \"User 2\",\r\n            \"accounts\": []\r\n        }\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://distributie-ktn-api.intern.rabobank.nl/demo/api/customer/v1/api/customers/batch",
+							"protocol": "http",
+							"host": [
+								"distributie-ktn-api",
+								"intern",
+								"rabobank",
+								"nl"
+							],
+							"path": [
+								"demo",
+								"api",
+								"customer",
+								"v1",
+								"api",
+								"customers",
+								"batch"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

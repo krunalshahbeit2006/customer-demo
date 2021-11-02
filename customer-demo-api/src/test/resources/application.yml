@@ -1,0 +1,18 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: customer-accounts-demo
+  banner:
+    location: classpath:META-INF/banner.txt
+  config:
+    name: application-context
+    location: classpath:*
+  jpa:
+    properties:
+      hibernate:
+        temp:
+          use_jdbc_metadata_defaults: false
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+  mustache:
+    check-template-location: false

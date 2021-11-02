@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="Rolling-File-CA2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/address-stub.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/address-stub.log.%d{yyyy-MM-dd}.%i
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="Asynchronous-Log-CA2" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="Rolling-File-CA2"/>
+    </appender>
+
+    <springProfile name="local">
+        <root level="debug">
+            <appender-ref ref="Rolling-File-CA2"/>
+            <appender-ref ref="STDOUT"/>
+        </root>
+        <logger name="com.example.demo.stub.address" level="debug" additivity="false">
+            <appender-ref ref="Rolling-File-CA2"/>
+            <appender-ref ref="STDOUT"/>
+        </logger>
+    </springProfile>
+
+    <root level="info">
+        <appender-ref ref="Rolling-File-CA2"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

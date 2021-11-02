@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n
+            </Pattern>
+        </layout>
+    </appender>
+
+    <appender name="Rolling-File-CustomerAccounts" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/customer-demo-api-tests.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>
+                %d{yyyy-MM-dd HH:mm:ss} - %msg%n
+            </Pattern>
+        </encoder>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/customer-demo-api-tests.log.%d{yyyy-MM-dd}.%i
+            </fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="Asynchronous-Log-CustomerAccounts" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+    </appender>
+
+    <logger name="com.example.demo.services.customer" level="info" additivity="false">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="com.intuit.karate" level="info" additivity="false">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="com.zaxxer.hikari" level="error" additivity="false">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org.apache" level="error" additivity="false">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="org.hibernate" level="error" additivity="false">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="reactor.netty.http" level="info" additivity="false">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="reactor.netty.tcp" level="info" additivity="false">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+        <appender-ref ref="STDOUT"/>
+    </logger>
+
+    <root level="error">
+        <appender-ref ref="Rolling-File-CustomerAccounts"/>
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>

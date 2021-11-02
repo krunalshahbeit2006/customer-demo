@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: account-stub
+  banner:
+    location: classpath:META-INF/banner.txt
+  config:
+    name: application-context
+    location: classpath:*
+  info:
+    build:
+      location: classpath:META-INF/build-info.properties
+    git:
+      location: classpath:git.properties

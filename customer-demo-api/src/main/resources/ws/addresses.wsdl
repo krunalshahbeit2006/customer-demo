@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<wsdl:definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tns="http://schemas.example.com/demo/services/address"
+                  targetNamespace="http://schemas.example.com/demo/services/address">
+    <wsdl:types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import schemaLocation="addresses.xsd"
+                        namespace="http://schemas.example.com/demo/services/address"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="getAddressRequest">
+        <wsdl:part element="tns:getAddressRequest" name="getAddressRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getAddressResponse">
+        <wsdl:part element="tns:getAddressResponse" name="getAddressResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="AddressesPort">
+        <wsdl:operation name="getAddress">
+            <wsdl:input message="tns:getAddressRequest" name="getAddressRequest"/>
+            <wsdl:output message="tns:getAddressResponse" name="getAddressResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="AddressesPortSoap11" type="tns:AddressesPort">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getAddress">
+            <soap:operation soapAction=""/>
+            <wsdl:input name="getAddressRequest">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getAddressResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AddressesPortService">
+        <wsdl:port binding="tns:AddressesPortSoap11" name="AddressesPortSoap11">
+            <soap:address location="http://localhost:49153/ws"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

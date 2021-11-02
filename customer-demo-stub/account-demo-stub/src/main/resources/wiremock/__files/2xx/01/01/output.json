@@ -1,0 +1,16 @@
+{
+  "name": "Customer 1",
+  "email": "customer.1@smtpdomain.com",
+  "telephone": "+319876543210",
+  "modifiedBy": "User 1",
+  "accounts": [
+    {
+      "accountId": "1000000001",
+      "name": "Account 1",
+      "iban": "NL39RABO0300065264",
+      "bic": "RABONL2U",
+      "amount": "123",
+      "modifiedBy": "User 1"
+    }
+  ]
+}

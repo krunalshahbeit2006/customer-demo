@@ -1,0 +1,94 @@
+{
+  "mappings": [
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/service/accounts",
+        "headers": {
+          "x-scenario": {
+            "equalTo": "OK-NO_RECORD"
+          }
+        },
+        "queryParameters": {
+          "customerId": {
+            "matches": "^[A-Za-z0-9]{1,10}$"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "absent": true
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "statusMessage": "OK",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "2xx/01/00/output.json"
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/service/accounts",
+        "headers": {
+          "x-scenario": {
+            "equalTo": "OK-SINGLE_RECORD"
+          }
+        },
+        "queryParameters": {
+          "customerId": {
+            "matches": "^[A-Za-z0-9]{1,10}$"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "absent": true
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "statusMessage": "OK",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "2xx/01/01/output.json"
+      }
+    },
+    {
+      "priority": 1,
+      "request": {
+        "method": "GET",
+        "urlPath": "/service/accounts",
+        "headers": {
+          "x-scenario": {
+            "equalTo": "OK-RECORD_IBAN_INVALID"
+          }
+        },
+        "queryParameters": {
+          "customerId": {
+            "matches": "^[A-Za-z0-9]{1,10}$"
+          }
+        },
+        "bodyPatterns": [
+          {
+            "absent": true
+          }
+        ]
+      },
+      "response": {
+        "status": 200,
+        "statusMessage": "OK",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "bodyFileName": "2xx/01/02/output.json"
+      }
+    }
+  ]
+}

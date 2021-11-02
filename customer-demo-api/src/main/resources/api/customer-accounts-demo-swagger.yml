@@ -1,0 +1,714 @@
+swagger: '2.0'
+info:
+  x-api-id: customeraccountsdemo
+  x-audience: company-internal
+  description: |
+    This is a sample demo application for learning and coaching Spring Boot.
+    validator: https://apivalidator-web.apps.pcf-t02-we.rabobank.nl/
+  version: 1.0.0
+  title: Customer Demo API
+  termsOfService: na
+  contact:
+    name: KRUNAL SHAH
+    url: 'http://swagger.io'
+    email: krunal.shah@rabobank.nl
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'virtserver.swaggerhub.com'
+basePath: /api/customers
+tags:
+  - name: customer accounts demo
+    description: This is a sample demo application for learning and coaching Spring Boot
+    externalDocs:
+      description: Find out more
+      url: 'http://swagger.io'
+schemes:
+  - https
+consumes:
+  - application/json
+  - application/merge-patch+json
+produces:
+  - application/json
+paths:
+  /:
+    post:
+      tags:
+        - customer accounts demo
+      summary: Create customer
+      description: This can be done by the accessing an api.
+      operationId: postCustomer
+      parameters:
+        - in: body
+          name: customerDTO
+          description: Created customer object
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerDTO'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/CustomerResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Problem'
+        '422':
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+    get:
+      tags:
+        - customer accounts demo
+      summary: Get customers
+      description: This can be done by the accessing an api.
+      operationId: getCustomers
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerResponse'
+        '204':
+          description: No Content
+          schema:
+            $ref: '#/definitions/Problem'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+  '/{customerId}':
+    get:
+      tags:
+        - customer accounts demo
+      summary: Get customer by id
+      description: This can be done by the accessing an api.
+      operationId: getCustomerById
+      parameters:
+        - name: customerId
+          in: path
+          description: Unique number to identify the customer
+          type: string
+          format: int64
+          minLength: 10
+          maxLength: 10
+          minimum: 1000000000
+          maximum: 9999999999
+          pattern: ^([1-9][0-9]{9})*$
+          required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/CustomerResponse'
+        '204':
+          description: No Content
+          schema:
+            $ref: '#/definitions/Problem'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+    put:
+      tags:
+        - customer accounts demo
+      summary: Updated customer
+      description: This can be done by the accessing an api.
+      operationId: updateCustomer
+      parameters:
+        - name: customerId
+          in: path
+          description: Unique number to identify the customer
+          type: string
+          format: int64
+          minLength: 10
+          maxLength: 10
+          minimum: 1000000000
+          maximum: 9999999999
+          pattern: ^([1-9][0-9]{9})*$
+          required: true
+        - in: body
+          name: customerDTO
+          description: Updated customer object
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerDTO'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/CustomerResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Problem'
+        '422':
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+    patch:
+      tags:
+        - customer accounts demo
+      summary: Patched customer
+      description: This can be done by the accessing an api.
+      operationId: patchCustomer
+      parameters:
+        - name: customerId
+          in: path
+          description: Unique number to identify the customer
+          type: string
+          format: int64
+          minLength: 10
+          maxLength: 10
+          minimum: 1000000000
+          maximum: 9999999999
+          pattern: ^([1-9][0-9]{9})*$
+          required: true
+        - in: body
+          name: customerDTO
+          description: Patched customer object
+          required: true
+          schema:
+            $ref: '#/definitions/CustomerDTO'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/CustomerResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Problem'
+        '422':
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+    delete:
+      tags:
+        - customer accounts demo
+      summary: Delete customer
+      description: This can be done by the accessing an api.
+      operationId: deleteCustomer
+      parameters:
+        - name: customerId
+          in: path
+          description: Unique number to identify the customer
+          type: string
+          format: int64
+          minLength: 10
+          maxLength: 10
+          minimum: 1000000000
+          maximum: 9999999999
+          pattern: ^([1-9][0-9]{9})*$
+          required: true
+      responses:
+        '202':
+          description: Accepted
+        '204':
+          description: No Content
+          schema:
+            $ref: '#/definitions/Problem'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Problem'
+        '410':
+          description: Gone
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+  /batch:
+    post:
+      tags:
+        - customer accounts demo
+      summary: Creates list of customers with given input array
+      description: This can be done by the accessing an api.
+      operationId: postCustomers
+      parameters:
+        - in: body
+          name: customerDTO
+          description: List of customer object
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerDTO'
+      responses:
+        '207':
+          description: Multi-Status
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Problem'
+        '422':
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+    put:
+      tags:
+        - customer accounts demo
+      summary: Update list of customers with given input array
+      description: This can be done by the accessing an api.
+      operationId: putCustomers
+      parameters:
+        - in: body
+          name: customerDTO
+          description: List of customer object
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerDTOForPut'
+      responses:
+        '207':
+          description: Multi-Status
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Problem'
+        '422':
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+    patch:
+      tags:
+        - customer accounts demo
+      summary: Patch list of customers with given input array
+      description: This can be done by the accessing an api.
+      operationId: patchCustomers
+      parameters:
+        - in: body
+          name: customerDTO
+          description: List of customer object
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerDTOForPut'
+      responses:
+        '207':
+          description: Multi-Status
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/CustomerResponse'
+        '400':
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/Problem'
+        '404':
+          description: Not Found
+          schema:
+            $ref: '#/definitions/Problem'
+        '408':
+          description: Request Timeout
+          schema:
+            $ref: '#/definitions/Problem'
+        '409':
+          description: Conflict
+          schema:
+            $ref: '#/definitions/Problem'
+        '422':
+          description: Unprocessable Entity
+          schema:
+            $ref: '#/definitions/Problem'
+        '500':
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/Problem'
+      security:
+        - api_key: [ ]
+definitions:
+  CustomerDTOForPut:
+    title: Customer DTO object for request
+    type: object
+    properties:
+      customerId:
+        description: Unique number to identify the customer
+        type: string
+        format: int64
+        minLength: 10
+        maxLength: 10
+        minimum: 1000000000
+        maximum: 9999999999
+        pattern: ^([1-9][0-9]{9})*$
+        uniqueItems: true
+        example: '1000000001 / 1000000002 / 1000000003...'
+      customer:
+        $ref: '#/definitions/CustomerDTO'
+    required:
+      - customerId
+      - customer
+    xml:
+      name: Customer
+  CustomerDTO:
+    title: Customer DTO object for request
+    type: object
+    properties:
+      name:
+        description: Name of the customer
+        type: string
+        minLength: 1
+        maxLength: 50
+        example: 'Customer 1 / Customer 2 / Customer 3...'
+      email:
+        description: E-Mail of the customer
+        type: string
+        minLength: 1
+        maxLength: 50
+        example: 'customer.1@smtpdomain.com / customer.2@smtpdomain.com / customer.3@smtpdomain.com...'
+      telephone:
+        description: Telephone of the customer
+        type: string
+        minLength: 1
+        maxLength: 15
+        example: '+319876543210 / +318765432109 / +317654321098...'
+      modifiedBy:
+        description: Name of the employee who created/updated the customer details
+        type: string
+        minLength: 1
+        maxLength: 50
+        example: 'User 1 / User 2 / User 3...'
+      accounts:
+        description: The account associated with the customer
+        type: array
+        maxItems: 5
+        items:
+          $ref: '#/definitions/AccountDTO'
+        default: [ ]
+    required:
+      - name
+      - email
+      - telephone
+      - modifiedBy
+    xml:
+      name: Customer
+
+  AccountDTO:
+    title: Account DTO object for request
+    type: object
+    properties:
+      accountId:
+        description: Unique number to identify the account
+        type: string
+        format: int64
+        minLength: 10
+        maxLength: 10
+        minimum: 1000000000
+        maximum: 9999999999
+        pattern: ^([1-9][0-9]{9})*$
+        uniqueItems: true
+        example: '1000000001 / 1000000002 / 1000000003...'
+      name:
+        description: Name of the account
+        type: string
+        minLength: 1
+        maxLength: 50
+        example: 'Account 1 / Account 2 / Account 3...'
+      iban:
+        description: International bank account number of the account
+        type: string
+        minLength: 1
+        maxLength: 35
+        pattern: ^([A-Za-z0-9]{35})*$
+        example: 'NL01RABO1234567890 / NL02RABO2345678901 / NL03RABO3456789012...'
+      bic:
+        description: Bank identifier code of the account
+        type: string
+        minLength: 1
+        maxLength: 11
+        pattern: ^([A-Za-z0-9]{11})*$
+        example: 'RABONL2U / ABNANL2A / INGBNL2A...'
+      amount:
+        description: Amount on the account
+        type: string
+        minLength: 1
+        maxLength: 13
+        pattern: ^([-+]?[1-9](\d{0,2})(\.\d{3})*(?:,\d{2})?)$
+        example: '1.234,00 / 2.345,05 / 3.456,50...'
+      modifiedBy:
+        description: Name of the employee who created/updated the account details
+        type: string
+        minLength: 1
+        maxLength: 50
+        example: 'User 1 / User 2 / User 3...'
+    required:
+      - accountId
+      - name
+      - iban
+      - bic
+      - amount
+      - modifiedBy
+    xml:
+      name: Account
+
+  CustomerResponse:
+    title: Customer object for response
+    type: object
+    properties:
+      uniqueId:
+        description: Unique number to identify the customer
+        type: string
+        example: '1000000001 / 1000000002 / 1000000003...'
+      name:
+        description: Name of the customer
+        type: string
+        example: 'Customer 1 / Customer 2 / Customer 3...'
+      email:
+        description: E-Mail of the customer
+        type: string
+        example: 'customer.1@smtpdomain.com / customer.2@smtpdomain.com / customer.3@smtpdomain.com...'
+      telephone:
+        description: Telephone of the customer
+        type: string
+        example: '+319876543210 / +318765432109 / +317654321098...'
+      accounts:
+        description: The account associated with the customer
+        type: array
+        items:
+          $ref: '#/definitions/AccountResponse'
+        default: [ ]
+    xml:
+      name: CustomerResponse
+
+  AccountResponse:
+    title: Account object for response
+    type: object
+    properties:
+      uniqueId:
+        description: Unique number to identify the account
+        type: string
+        example: '1000000001 / 1000000002 / 1000000003...'
+      name:
+        description: Name of the account
+        type: string
+        example: 'Account 1 / Account 2 / Account 3...'
+      iban:
+        description: International bank account number of the account
+        type: string
+        example: 'NL01RABO1234567890 / NL02RABO2345678901 / NL03RABO3456789012...'
+      bic:
+        description: Bank identifier code of the account
+        type: string
+        example: 'RABONL2U / ABNANL2A / INGBNL2A...'
+      amount:
+        description: Amount on the account
+        type: string
+        example: '1.234,00 / 2.345,05 / 3.456,50...'
+    xml:
+      name: AccountResponse
+
+  Problem:
+    title: Problem object for exception/error
+    type: object
+    properties:
+      status:
+        type: integer
+        format: int32
+        description: |
+          The HTTP status code generated by the origin server for this occurrence of the problem.
+        exclusiveMaximum: true
+        minimum: 200
+        maximum: 500
+        example: >-
+          204, 400, 404, 408, 409, 410, 422, 500
+      title:
+        type: string
+        description: |
+          A short, human-readable summary of the problem type.
+          It SHOULD NOT change from occurrence to occurrence of the problem, except for purposes of localisation.
+        example: >-
+          No Content, Bad Request, Not Found, Request Timeout, Conflict, Gone, Unprocessable Entity, Internal Server Error
+      detail:
+        type: string
+        description: |
+          A human readable explanation specific to this occurrence of the problem.
+        example: >-
+          No Content for input field
+      type:
+        type: string
+        format: uri
+        description: |
+          An absolute URI that identifies the problem type.  When dereferenced,
+          it SHOULD provide human-readable documentation for the problem type (e.g., using HTML).
+        default: 'about:blank'
+        example: >-
+          'https://zalando.github.io/problem/constraint-violation'
+      instance:
+        type: string
+        format: uri
+        description: |
+          An absolute URI that identifies the specific occurrence of the problem.
+          It may or may not yield further information if dereferenced.
+        example: >-
+          '/problem/connection-error#token-info-read-timed-out'
+      violations:
+        type: array
+        items:
+          $ref: '#/definitions/Violation'
+        description: |
+          Violation Details.externalDocs:
+
+  Violation:
+    type: object
+    properties:
+      field:
+        type: string
+        description: |
+          A human readable explanation specific to this occurrence of the problem that is helpful to locate the problem and give advice on how to proceed.
+          Written in English and readable for engineers, usually not suited for non technical stakeholders and not localized.
+        example: customer.name
+      message:
+        type: string
+        description: |
+          A human readable explanation specific to this occurrence of the problem that is helpful to locate the problem and give advice on how to proceed.
+          Written in English and readable for engineers, usually not suited for non technical stakeholders and not localized.
+        example: Name must not be null or blank
+    xml:
+      name: Violation
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: Rabobank-ApiKey
+    in: header

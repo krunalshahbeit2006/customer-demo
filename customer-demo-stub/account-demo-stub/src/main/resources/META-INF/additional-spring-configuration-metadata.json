@@ -1,0 +1,14 @@
+{
+  "properties": [
+    {
+      "name": "wiremock.mappings.files.path",
+      "type": "java.lang.String",
+      "description": "Description for wiremock.mappings.files.path."
+    },
+    {
+      "name": "wiremock.verbose.enabled",
+      "type": "java.lang.String",
+      "description": "Description for wiremock.verbose.enabled."
+    }
+  ]
+}
