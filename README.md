@@ -10,14 +10,6 @@ You are required to have below user account(s) credentials to perform basic oper
 Please visit the site(s) in Internal reference(s), if you would like to know more about requesting account or administrator of an account for below tools.
 * [AZURE DevOps](https://dev.azure.com) - Azure DevOps (Product backlog, version management, CI/CD pipeline) tool
 * [AZURE Portal](https://portal.azure.com) - Azure portal resource management tool
-* [NEXUS](https://maven.rabobank.nl/nexus) - Nexus Maven artifact management tool
-* [APIARY](https://apiary.io) - APIARY document management tool
-* [ORACLE-API](https://apiprod-rabointegration1.apiplatform.ocp.oraclecloud.com/apiplatform) - ORACLE API management tool
-* [SONAR](http://sonar.rabobank.nl:9000) - Sonarqube code quality tool
-* [FORTIFY](https://fortify.rabobank.nl) - Fortify security violation report tool
-* [CLM / NexusIq](https://clm.dev.rabobank.nl) - CLM/NexusIq dependency violation report tool
-* [SPLUNK](https://splunk.rabobank.com:8000) - Splunk log monitor tool
-* [SIGNAL-FX](https://rabobank.signalfx.com) - signalfx performance monitor tool
 
 ## Third party software(s)
 It is recommended to install the software(s) with default configuration and everything in one folder (for example: 'C:/apps/' or 'C:/software(s)/').
@@ -77,7 +69,7 @@ The project uses intellij idea to develop the source code and therefore java, ma
 ###         1.6 Clone
 To get started with the project, you can easily clone this repository with git by running the command below in the terminal window.
   ```
-  git clone https://raboweb@dev.azure.com/raboweb/LCA/_git/customer-accounts-demo
+  git clone https://github.com/krunalshahbeit2006/customer-demo.git
   ```
 ##2.	Software dependencies
 * [JAVA](https://www.oracle.com/java) - Oracle Java™ Platform SDK's latest version
